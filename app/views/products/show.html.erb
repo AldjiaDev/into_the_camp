@@ -1,0 +1,12 @@
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+<p>Prix : <%= @product.price_per_day %>€/jour</p>
+<p>Localisation : <%= @product.location %></p>
+
+<% if user_signed_in? && current_user == @product.user %>
+  <%= link_to "Modifier", edit_product_path(@product), class: "btn btn-secondary" %>
+  <%= link_to "Supprimer", @product, method: :delete, data: { confirm: "Es-tu sûr ?" }, class: "btn btn-danger" %>
+<% end %>
+
+<%= link_to "Retour", products_path, class: "btn btn-light" %>
+
