@@ -20,8 +20,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-   resources :users
-   root "home#index"
+   resources :users, only: [:show, :edit, :update]
+   resources :products do
+    resources :reservations, only: [:new, :create]
+  end
+  resources :reservations, only: [:index, :show, :edit, :update, :destroy]
+  root "products#index"
 
    resources :products
 end

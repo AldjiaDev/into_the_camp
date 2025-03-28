@@ -1,15 +1,18 @@
-<h1>Liste des produits</h1>
+<h1>Mes Produits</h1>
 
-<%= link_to "Ajouter un produit", new_product_path, class: "btn btn-primary" if user_signed_in? %>
-
-<% @products.each do |product| %>
-  <div>
-    <h2><%= link_to product.name, product_path(product) %></h2>
-    <p><%= product.description %></p>
-    <p>Prix : <%= product.price_per_day %>€/jour</p>
-    <% if user_signed_in? && current_user == product.user %>
-      <%= link_to "Modifier", edit_product_path(product), class: "btn btn-secondary" %>
-      <%= link_to "Supprimer", product, method: :delete, data: { confirm: "Es-tu sûr ?" }, class: "btn btn-danger" %>
+<% if @products.any? %>
+  <ul>
+    <% @products.each do |product| %>
+      <li>
+        <%= link_to product.name, product %> - <%= product.price_per_day %> €
+        <%= link_to 'Modifier', edit_product_path(product) %>
+        <%= link_to 'Supprimer', product_path(product), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+      </li>
     <% end %>
-  </div>
+  </ul>
+<% else %>
+  <p>Aucun produit ajouté pour le moment.</p>
 <% end %>
+
+<%= link_to 'Ajouter un nouveau produit', new_product_path %>
+

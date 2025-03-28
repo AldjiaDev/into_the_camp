@@ -1,0 +1,13 @@
+<h1>Mes réservations</h1>
+
+<% @reservations.each do |reservation| %>
+  <div>
+    <p><strong>Produit :</strong> <%= reservation.product.name %></p>
+    <p><strong>Date de début :</strong> <%= reservation.start_date %></p>
+    <p><strong>Date de fin :</strong> <%= reservation.end_date %></p>
+    <p><strong>Prix total :</strong> <%= reservation.total_price %> €</p>
+    <p><strong>Status :</strong> <%= reservation.status %></p>
+    <%= link_to 'Voir', reservation_path(reservation) %> |
+    <%= link_to 'Annuler', reservation_path(reservation), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+  </div>
+<% end %>
