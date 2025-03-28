@@ -1,0 +1,41 @@
+<h1>Nouvelle réservation pour <%= @product.name %></h1>
+
+<%= form_with(model: @reservation, local: true) do |form| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+      <ul>
+        <% @reservation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_field :end_date %>
+  </div>
+
+  <!-- Total Price calculé automatiquement -->
+  <div class="field">
+    <%= form.label :total_price %>
+    <%= form.number_field :total_price, step: 0.01, value: @reservation.total_price, readonly: true %>
+  </div>
+
+  <!-- Status peut être géré côté serveur sans afficher un champ ici -->
+  <div class="hidden_field">
+    <%= form.hidden_field :status, value: 'pending' %> <!-- Status "pending" par défaut -->
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Réserver" %>
+  </div>
+<% end %>
+
+<%= link_to 'Retour', product_reservations_path(@product) %>

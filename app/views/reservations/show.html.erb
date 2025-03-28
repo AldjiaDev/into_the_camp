@@ -1,0 +1,33 @@
+<h1><%= @product.name %></h1>
+
+<p><%= @product.description %></p>
+<p>Prix par jour : <%= @product.price_per_day %> €</p>
+<p>Localisation : <%= @product.location %></p>
+
+<h2>Réservations</h2>
+<% if @product.reservations.any? %>
+  <ul>
+    <% @product.reservations.each do |reservation| %>
+      <li>
+        <%= link_to reservation.start_date, reservation %> - <%= reservation.end_date %> (<%= reservation.status.capitalize %>)
+        <%= link_to 'Supprimer', reservation_path(reservation), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } if reservation.user == current_user %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Aucune réservation pour ce produit.</p>
+<% end %>
+
+<%= link_to 'Nouvelle réservation', new_product_reservation_path(@product) %> <!-- Lien vers la création d'une nouvelle réservation -->
+
+<h1>Détails de la réservation</h1>
+
+<p><strong>Produit :</strong> <%= @reservation.product.name %></p>
+<p><strong>Date de début :</strong> <%= @reservation.start_date %></p>
+<p><strong>Date de fin :</strong> <%= @reservation.end_date %></p>
+<p><strong>Prix total :</strong> <%= @reservation.total_price %> €</p>
+<p><strong>Statut :</strong> <%= @reservation.status.capitalize %></p>
+
+<%= link_to 'Retour à mes réservations', reservations_path %>
+<%= link_to 'Modifier', edit_reservation_path(@reservation) if @reservation.user == current_user %>
+<%= link_to 'Supprimer', reservation_path(@reservation), method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette réservation ?' } if @reservation.user == current_user %>
