@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  get "products/index"
-  get "products/show"
-  get "products/new"
-  get "products/create"
-  get "products/edit"
-  get "products/update"
-  get "products/destroy"
+  get "pages/about"
+  get "pages/services"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -16,16 +11,23 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get 'contact', to: 'pages#contact', as: :contact
+
+  get "about", to: "pages#about", as: :about
+  get "services", to: "pages#services", as: :services
 
   # Defines the root path route ("/")
   #root "posts#index"
 
-   resources :users, only: [:show, :edit, :update]
-   resources :products do
-    resources :reservations, only: [:new, :create]
-  end
-  resources :reservations, only: [:index, :show, :edit, :update, :destroy]
   root "products#index"
 
-   resources :products
+  resources :users, only: [:show, :edit, :update]
+
+  resources :products do
+    resources :reservations, only: [:new, :create]
+  end
+
+  resources :reservations, only: [:index, :show, :edit, :update, :destroy]
+
+  # Autres routes spécifiques ou personnalisées peuvent être ajoutées ici
 end
