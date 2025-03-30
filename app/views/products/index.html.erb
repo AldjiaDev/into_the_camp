@@ -1,18 +1,26 @@
 <h1>Mes Produits</h1>
 
+<%= image_tag 'camping1.jpeg', class: 'img-fluid', alt: 'Image de camping' %>
+
 <% if @products.any? %>
-  <ul>
+  <ul class="list-unstyled">
     <% @products.each do |product| %>
-      <li>
-        <%= link_to product.name, product %> - <%= product.price_per_day %> €
-        <%= link_to 'Modifier', edit_product_path(product) %>
-        <%= link_to 'Supprimer', product_path(product), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+      <li class="media my-4">
+        <img src="<%= asset_path('camping1.jpeg') %>" class="mr-3 img-thumbnail" alt="Image de <%= product.name %>" style="width: 100px; height: auto;">
+        <div class="media-body">
+          <h5 class="mt-0 mb-1"><%= link_to product.name, product %></h5>
+          Prix par jour: <%= product.price_per_day %> €
+          <div>
+            <%= link_to 'Modifier', edit_product_path(product), class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Supprimer', product_path(product), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'btn btn-danger btn-sm' %>
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p>Aucun produit ajouté pour le moment.</p>
+  <div class="alert alert-primary">Aucun produit ajouté pour le moment.</div>
 <% end %>
 
-<%= link_to 'Ajouter un nouveau produit', new_product_path %>
+<%= link_to 'Ajouter un nouveau produit', new_product_path, class: 'btn btn-success' %>
 
