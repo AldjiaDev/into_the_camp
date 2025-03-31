@@ -118,3 +118,47 @@ blockquote {
     margin-top: 10px;
     color: #00410c; /* Couleur en accord avec votre palette */
 }
+
+.produits {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.produit {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.image-produit {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.prix {
+  font-size: 1.2em;
+  color: #d9480f;
+  margin: 10px 0;
+}
+
+.btn-acheter {
+  padding: 10px 20px;
+  background-color: #f76707;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-acheter:hover {
+  background-color: #d9480f;
+}

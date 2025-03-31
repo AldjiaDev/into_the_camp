@@ -24,3 +24,42 @@
 
 <%= link_to 'Ajouter un nouveau produit', new_product_path, class: 'btn btn-success' %>
 
+<section class="produits">
+  <h2>Nos Produits Camping</h2>
+  <div class="produit">
+    <%= image_tag('hamac.jpeg', class: 'image-produit', alt: 'Hamac de camping') %>
+    <h3>Hamac de Camping</h3>
+    <p>Profitez de moments de détente en plein air avec ce hamac léger et résistant, facile à installer et à transporter.</p>
+    <p class="prix">€19,99</p>
+    <a href="#" class="btn-acheter">Acheter</a>
+  </div>
+  <div class="produit">
+    <%= image_tag('lampe.jpeg', class: 'image-produit', alt: 'Lampe de camping LED') %>
+    <h3>Lampe de Camping LED</h3>
+    <p>Cette lampe LED offre une luminosité réglable et une longue durée de vie de la batterie, idéale pour vos nuits en camping.</p>
+    <p class="prix">€24,99</p>
+    <a href="#" class="btn-acheter">Acheter</a>
+  </div>
+  <div class="produit">
+    <%= image_tag('rechaud.jpeg', class: 'image-produit', alt: 'Réchaud portable') %>
+    <h3>Réchaud Portable</h3>
+    <p>Préparez vos repas en toute simplicité avec ce réchaud compact et efficace, compatible avec diverses cartouches de gaz.</p>
+    <p class="prix">€29,99</p>
+    <a href="#" class="btn-acheter">Acheter</a>
+  </div>
+  <div class="produit">
+    <%= image_tag('saccouchage.jpeg', class: 'image-produit', alt: 'Sac de couchage 3 saisons') %>
+    <h3>Sac de Couchage 3 Saisons</h3>
+    <p>Conçu pour vous garder au chaud du printemps à l'automne, ce sac de couchage est léger et confortable.</p>
+    <p class="prix">€39,99</p>
+    <a href="#" class="btn-acheter">Acheter</a>
+  </div>
+  <div class="produit">
+    <%= image_tag('tente.jpeg', class: 'image-produit', alt: 'Tente 4 personnes') %>
+    <h3>Tente 4 Personnes</h3>
+    <p>Spacieuse et facile à monter, cette tente offre une protection fiable contre les intempéries pour vos aventures en plein air.</p>
+    <p class="prix">€99,99</p>
+    <a href="#" class="btn-acheter">Acheter</a>
+  </div>
+</section>
+
